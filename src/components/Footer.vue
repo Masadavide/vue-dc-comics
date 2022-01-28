@@ -2,34 +2,10 @@
   <footer>
     <div class="submenu">
       <div class="container">
-        <div class="link">
-          <img src="../assets/img/buy-comics-digital-comics.png" alt="">
-          <div>
-            Digital comics
-          </div>
-        </div>
-        <div class="link">
-          <img src="../assets/img/buy-comics-digital-comics.png" alt="">
-          <div>
-            Digital comics
-          </div>
-        </div>
-        <div class="link">
-          <img src="../assets/img/buy-comics-digital-comics.png" alt="">
-          <div>
-            Digital comics
-          </div>
-        </div>
-        <div class="link">
-          <img src="../assets/img/buy-comics-digital-comics.png" alt="">
-          <div>
-            Digital comics
-          </div>
-        </div>
-        <div class="link">
-          <img src="../assets/img/buy-comics-digital-comics.png" alt="">
-          <div>
-            Digital comics
+        <div class="link" v-for="(element, index) in links" :key="index">
+          <img :src="element.img" alt="">
+          <div class="link-title">
+            {{element.text}}
           </div>
         </div>
       </div>
@@ -236,7 +212,39 @@
 
 <script>
 export default {
-  name: 'Footer'
+  name: 'Footer',
+
+  data() {
+    return{
+      links:[
+        {
+          text: "DIGITAL COMICS",
+          img:require("../assets/img/buy-comics-digital-comics.png"),
+          current: false,
+        },
+        {
+          text: "DC MERCHANDISE",
+          img: require("../assets/img/buy-comics-merchandise.png"),
+          current: false,
+        },
+        {
+          text: "SUBSCRIPTION",
+          img: require("../assets/img/buy-comics-subscriptions.png"),
+          current: false,
+        },
+        {
+          text: "COMIC SHOP LOCATOR",
+          img: require("../assets/img/buy-comics-shop-locator.png"),
+          current: false,
+        },
+        {
+          text: "DC POWER VISA",
+          img: require("../assets/img/buy-dc-power-visa.svg"),
+          current: false,
+        },
+      ]
+    }
+  }
 }
 </script>
 
@@ -257,9 +265,15 @@ footer{
       .link{
         display: flex;
         align-items: center;
+        margin: 0 10px;
 
         img{
           height: 70px;
+          width: 60px;
+        }
+
+        .link-title{
+          margin: 10px;
         }
       }
     }
